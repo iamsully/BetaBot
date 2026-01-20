@@ -1,11 +1,10 @@
 package ca.northshoretech;
 
-import net.dv8tion.jda.api.entities.channel.concrete.TextChannel;
-
 import java.util.Calendar;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.UUID;
+import net.dv8tion.jda.api.entities.channel.concrete.TextChannel;
 
 public class Riddle {
 
@@ -37,9 +36,9 @@ public class Riddle {
         timerTask = new TimerTask() {
             @Override
             public void run() {
-                BetaBoys.getRiddleManager().sendRiddleAnswer(channel);
-                BetaBoys.getRiddleManager().removeRiddleFromList();
-                BetaBoys.getRiddleManager().clearMemberAnsweredRiddlesList();
+                BetaBot.getRiddleManager().sendRiddleAnswer(channel);
+                BetaBot.getRiddleManager().removeRiddleFromList();
+                BetaBot.getRiddleManager().clearMemberAnsweredRiddlesList();
                 timer.cancel();
             }
         };

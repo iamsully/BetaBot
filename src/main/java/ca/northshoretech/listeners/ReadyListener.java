@@ -1,10 +1,11 @@
 package ca.northshoretech.listeners;
 
-import ca.northshoretech.BetaBoys;
+import ca.northshoretech.BetaBot;
 import net.dv8tion.jda.api.events.session.ReadyEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 
 public class ReadyListener extends ListenerAdapter {
+
     /**
      * Handles the on ready event and prints that the bot as started
      *
@@ -12,6 +13,6 @@ public class ReadyListener extends ListenerAdapter {
      */
     @Override
     public void onReady(ReadyEvent event) {
-        BetaBoys.getLogger().info("The bot is now ready");
+        BetaBot.getLogger().info("The bot is now ready");
     }
 }

@@ -6,6 +6,7 @@ import ca.northshoretech.listeners.ReadyListener;
 import ca.northshoretech.listeners.RiddleDirectMessageListener;
 import ca.northshoretech.managers.RiddleManager;
 import io.github.cdimascio.dotenv.Dotenv;
+import javax.security.auth.login.LoginException;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.OnlineStatus;
@@ -14,11 +15,9 @@ import net.dv8tion.jda.api.requests.GatewayIntent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.security.auth.login.LoginException;
+public class BetaBot {
 
-public class BetaBoys {
-
-    private static final Logger logger = LoggerFactory.getLogger(BetaBoys.class);
+    private static final Logger logger = LoggerFactory.getLogger(BetaBot.class);
     private static final Dotenv config = Dotenv.configure().load();
     private static final RiddleManager riddleManager = new RiddleManager();
 
@@ -27,23 +26,29 @@ public class BetaBoys {
      *
      * @throws LoginException
      */
-    private BetaBoys() throws LoginException, InterruptedException {
+    private BetaBot() throws LoginException, InterruptedException {
         String token = config.get("TOKEN");
 
         // Check to make sure the token is valid from the dotenv file
-        if (token == null) throw new LoginException("There was no token in the dot env file");
+        if (token == null) throw new LoginException(
+            "There was no token in the dot env file"
+        );
 
-        JDA jda = JDABuilder.createDefault(token).enableIntents(GatewayIntent.MESSAGE_CONTENT,
-                        GatewayIntent.GUILD_MESSAGES,
-                        GatewayIntent.DIRECT_MESSAGES)
-                .setStatus(OnlineStatus.DO_NOT_DISTURB)
-                .setActivity(Activity.watching("Beta Boys Streamers"))
-                .addEventListeners(
-                        new ReadyListener(),
-                        new RiddleDirectMessageListener(),
-                        new DailyQuestionCommand(),
-                        new DailyRiddleCommand())
-                .build();
+        JDA jda = JDABuilder.createDefault(token)
+            .enableIntents(
+                GatewayIntent.MESSAGE_CONTENT,
+                GatewayIntent.GUILD_MESSAGES,
+                GatewayIntent.DIRECT_MESSAGES
+            )
+            .setStatus(OnlineStatus.DO_NOT_DISTURB)
+            .setActivity(Activity.watching("Beta Boys Streamers"))
+            .addEventListeners(
+                new ReadyListener(),
+                new RiddleDirectMessageListener(),
+                new DailyQuestionCommand(),
+                new DailyRiddleCommand()
+            )
+            .build();
         jda.awaitReady();
     }
 
@@ -63,10 +68,12 @@ public class BetaBoys {
      */
     public static void main(String[] args) {
         try {
-            BetaBoys bot = new BetaBoys();
+            BetaBot bot = new BetaBot();
         } catch (LoginException | InterruptedException e) {
-            getLogger().error("There was an error with the discord login token");
-//            System.err.println("There was an error with the discord login token");
+            getLogger().error(
+                "There was an error with the discord login token"
+            );
+            //            System.err.println("There was an error with the discord login token");
             throw new RuntimeException(e);
         }
     }
@@ -88,5 +95,4 @@ public class BetaBoys {
     public static Logger getLogger() {
         return logger;
     }
-
 }
