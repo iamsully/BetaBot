@@ -1,6 +1,6 @@
-package ca.northshoretech.listeners;
+package ca.sullyq.listeners;
 
-import ca.northshoretech.BetaBot;
+import ca.sullyq.HavenBot;
 import net.dv8tion.jda.api.events.session.ReadyEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 
@@ -13,6 +13,6 @@ public class ReadyListener extends ListenerAdapter {
      */
     @Override
     public void onReady(ReadyEvent event) {
-        BetaBot.getLogger().info("The bot is now ready");
+        HavenBot.getLogger().info("HavenBot is now online");
     }
 }

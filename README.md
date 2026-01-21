@@ -1,28 +1,32 @@
-# Beta Boys Discord Bot
+# 🌠 HavenBot 🌠
 
-**Beta Boys** is a versatile Discord bot designed to engage and entertain your community with daily questions, riddles,
-and administrative functionalities.
+**HavenBot** is the official bot of the **Starhaven** network.  
+It is designed to help communities run smoothly with tools for roles, events, daily interaction, and server automation.
 
-**This bot currently is guild specific, and probably won't work as intended for you.**
+**HavenBot is still a WIP and tailored for certain guilds. Some commands or features might not behave as expected outside those servers.**
 
----
+## 🛠️ Features
+- 🏷️ **Role Management** – Assign or remove roles easily
+- 🔔 **Event Notifications** – Keep members informed about server events
+- ⚙️ **Server Automation** – Automate routine tasks and keep the community organized
+- ℹ️ **Info Commands** – Quick access to server and project details
+- 🎲 **Daily Fun Commands** – Engage with your community through daily questions and riddles
 
-## Features
+## 💻 Usage
+- ⌨️️ Commands are prefixed with `/` (e.g., `/help`)
+- 🟢 Designed for ease of use and minimal setup
 
-### 1. **Daily Question**
+## 🌠 Philosophy
+**HavenBot is built to be:**
+- 😊 Friendly and approachable
+- 🔄 Flexible for different server types
+- ⭐ Consistent with the Starhaven branding
 
-- The bot sends a new question every day to encourage interaction among server members.
+## 🤝 Community & Contribution
+HavenBot thrives because of feedback and collaboration. You can get involved in a few ways:
+- 📣 Share feedback or report bugs in the Starhaven community
+- 🛠️ Suggest features or improvements via discussion channels
+- 🧩 Help test new commands and functions before public release
+- ⭐ Spread the word and help others discover HavenBot
 
-### 2. **Riddles**
-
-- The bot can present riddles to challenge your community’s problem-solving skills.
-- Members can guess the answer, and the bot will provide the solution at a set time.
-
-### 3. **Admin Functionality**
-
-- **Ban, Kick, Mute**: Admins can use the bot for basic server management like banning or muting members.
-- **Clear Messages**: Admins can clear a specified number of messages from a channel.
-- **Message Filter**: Admins can enable a message filter with a list of 'bad words'.
-
----
-
+> Everyone’s input helps make HavenBot better — your voice shapes the bot’s evolution!

@@ -1,5 +1,6 @@
-package ca.northshoretech.helpers;
+package ca.sullyq.helpers;
 
+import ca.sullyq.HavenBot;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.User;
 import net.dv8tion.jda.api.entities.channel.middleman.MessageChannel;
@@ -15,7 +16,7 @@ public class EmbedHelper {
         embedBuilder.setColor(Color.RED);
         embedBuilder.setDescription(errorMessage);
         embedBuilder.setTimestamp(Instant.now());
-        embedBuilder.setFooter("Powered By BetaBoys", "https://media.discordapp.net/attachments/1352001410069172387/1352464998886277161/image.jpg?ex=67dec56f&is=67dd73ef&hm=ef420dc5c3306558c8e6b4c732dccdda0356f1e8ccedaf3c6e5fdbaaa6314fb7&=&format=webp&width=960&height=960");
+        embedBuilder.setFooter(HavenBot.POWERED_BY, HavenBot.ICON_URL);
         channel.sendMessageEmbeds(embedBuilder.build()).queue();
     }
 
@@ -25,7 +26,7 @@ public class EmbedHelper {
         embedBuilder.setColor(Color.YELLOW);
         embedBuilder.setDescription(warningMessage);
         embedBuilder.setTimestamp(Instant.now());
-        embedBuilder.setFooter("Powered By BetaBoys", "https://media.discordapp.net/attachments/1352001410069172387/1352464998886277161/image.jpg?ex=67dec56f&is=67dd73ef&hm=ef420dc5c3306558c8e6b4c732dccdda0356f1e8ccedaf3c6e5fdbaaa6314fb7&=&format=webp&width=960&height=960");
+        embedBuilder.setFooter(HavenBot.POWERED_BY, HavenBot.ICON_URL);
         channel.sendMessageEmbeds(embedBuilder.build()).queue();
     }
 
@@ -35,7 +36,7 @@ public class EmbedHelper {
         embedBuilder.setColor(Color.GREEN);
         embedBuilder.setDescription(user.getAsMention() + " has guessed the correct answer!");
         embedBuilder.setTimestamp(Instant.now());
-        embedBuilder.setFooter("Powered By BetaBoys", "https://media.discordapp.net/attachments/1352001410069172387/1352464998886277161/image.jpg?ex=67dec56f&is=67dd73ef&hm=ef420dc5c3306558c8e6b4c732dccdda0356f1e8ccedaf3c6e5fdbaaa6314fb7&=&format=webp&width=960&height=960");
+        embedBuilder.setFooter(HavenBot.POWERED_BY, HavenBot.ICON_URL);
         channel.sendMessageEmbeds(embedBuilder.build()).queue();
     }
 
@@ -51,7 +52,7 @@ public class EmbedHelper {
             embedBuilder.setDescription("Sorry, wrong answer! Try again.");
         }
         embedBuilder.setTimestamp(Instant.now());
-        embedBuilder.setFooter("Powered By BetaBoys", "https://media.discordapp.net/attachments/1352001410069172387/1352464998886277161/image.jpg?ex=67dec56f&is=67dd73ef&hm=ef420dc5c3306558c8e6b4c732dccdda0356f1e8ccedaf3c6e5fdbaaa6314fb7&=&format=webp&width=960&height=960");
+        embedBuilder.setFooter(HavenBot.POWERED_BY, HavenBot.ICON_URL);
         channel.sendMessageEmbeds(embedBuilder.build()).queue();
     }
 }

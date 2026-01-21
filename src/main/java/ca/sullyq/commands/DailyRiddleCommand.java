@@ -1,8 +1,8 @@
-package ca.northshoretech.commands;
+package ca.sullyq.commands;
 
-import ca.northshoretech.BetaBot;
-import ca.northshoretech.Riddle;
-import ca.northshoretech.helpers.EmbedHelper;
+import ca.sullyq.HavenBot;
+import ca.sullyq.Riddle;
+import ca.sullyq.helpers.EmbedHelper;
 import java.awt.*;
 import java.time.Instant;
 import java.util.List;
@@ -16,14 +16,14 @@ import org.jetbrains.annotations.NotNull;
 
 public class DailyRiddleCommand extends ListenerAdapter {
 
-    private final String prefix = BetaBot.getConfig().get("PREFIX");
-    private final String botCommandsChannelId = BetaBot.getConfig().get(
+    private final String prefix = HavenBot.getConfig().get("PREFIX");
+    private final String botCommandsChannelId = HavenBot.getConfig().get(
         "COMMANDS_CHANNEL"
     );
-    private final String dailyRiddleChannelId = BetaBot.getConfig().get(
+    private final String dailyRiddleChannelId = HavenBot.getConfig().get(
         "DAILY_RIDDLE_CHANNEL"
     );
-    private final String adminRoleId = BetaBot.getConfig().get("ADMIN_ROLE_ID");
+    private final String adminRoleId = HavenBot.getConfig().get("ADMIN_ROLE_ID");
     private final String commandPrefix = prefix + "rotd";
 
     /**
@@ -45,7 +45,7 @@ public class DailyRiddleCommand extends ListenerAdapter {
         ) return;
 
         // make sure there is only one active riddle
-        if (BetaBot.getRiddleManager().getActiveRiddle() != null) {
+        if (HavenBot.getRiddleManager().getActiveRiddle() != null) {
             EmbedHelper.sendWarningEmbed(
                 event.getChannel(),
                 "There is already a riddle created. There can only be one riddle created at a time"
@@ -56,7 +56,7 @@ public class DailyRiddleCommand extends ListenerAdapter {
         // check if author is admin
         Role adminRole = event.getJDA().getRoleById(adminRoleId);
         if (adminRole == null) {
-            BetaBot.getLogger().error(
+            HavenBot.getLogger().error(
                 "No admin role found. Please make sure theres an admin role in the server"
             );
             return;
@@ -79,7 +79,7 @@ public class DailyRiddleCommand extends ListenerAdapter {
             .substring(commandPrefix.length())
             .split("-");
         if (riddleMessage.length < 2) {
-            BetaBot.getLogger().error(
+            HavenBot.getLogger().error(
                 "The riddle message must have a riddle and an answer"
             );
             EmbedHelper.sendErrorEmbed(
@@ -93,7 +93,7 @@ public class DailyRiddleCommand extends ListenerAdapter {
             .getGuild()
             .getTextChannelById(dailyRiddleChannelId);
         if (dailyRiddleChannel == null) {
-            BetaBot.getLogger().error(
+            HavenBot.getLogger().error(
                 "There was an error finding the daily riddle channel by its ID"
             );
             EmbedHelper.sendErrorEmbed(
@@ -108,7 +108,7 @@ public class DailyRiddleCommand extends ListenerAdapter {
             riddleMessage[0],
             riddleMessage[1]
         );
-        BetaBot.getRiddleManager().addRiddleToList(riddle);
+        HavenBot.getRiddleManager().addRiddleToList(riddle);
 
         // create embed for the response
         EmbedBuilder embedBuilder = new EmbedBuilder();
@@ -116,10 +116,8 @@ public class DailyRiddleCommand extends ListenerAdapter {
         embedBuilder.setColor(Color.MAGENTA);
         embedBuilder.setDescription(riddle.getRiddle());
         embedBuilder.setTimestamp(Instant.now());
-        embedBuilder.setFooter(
-            "Powered By BetaBoys",
-            "https://media.discordapp.net/attachments/1352001410069172387/1352464998886277161/image.jpg?ex=67dec56f&is=67dd73ef&hm=ef420dc5c3306558c8e6b4c732dccdda0356f1e8ccedaf3c6e5fdbaaa6314fb7&=&format=webp&width=960&height=960"
-        );
+        embedBuilder.setFooter(HavenBot.POWERED_BY, HavenBot.ICON_URL);
+
 
         // send message to the daily-riddle channel
         dailyRiddleChannel

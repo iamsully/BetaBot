@@ -1,4 +1,4 @@
-package ca.northshoretech;
+package ca.sullyq;
 
 import java.util.Calendar;
 import java.util.Timer;
@@ -36,9 +36,9 @@ public class Riddle {
         timerTask = new TimerTask() {
             @Override
             public void run() {
-                BetaBot.getRiddleManager().sendRiddleAnswer(channel);
-                BetaBot.getRiddleManager().removeRiddleFromList();
-                BetaBot.getRiddleManager().clearMemberAnsweredRiddlesList();
+                HavenBot.getRiddleManager().sendRiddleAnswer(channel);
+                HavenBot.getRiddleManager().removeRiddleFromList();
+                HavenBot.getRiddleManager().clearMemberAnsweredRiddlesList();
                 timer.cancel();
             }
         };
